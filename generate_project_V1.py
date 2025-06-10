@@ -33,7 +33,8 @@ def create_project(nom_site, slug, couleur="#00838f"):
 
     # style.css
     style_src = (TEMPLATE_DIR / "style.css").read_text(encoding="utf-8")
-    (base / "static" / "css" / "style.css").write_text(style_src.format(couleur=couleur), encoding="utf-8")
+    style_src = style_src.replace("#00838f", couleur)
+    (base / "static" / "css" / "style.css").write_text(style_src, encoding="utf-8")
 
     # README.md
     readme_src = (TEMPLATE_DIR / "README.md").read_text(encoding="utf-8")
