@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultats - {{ nom_site }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ praticien.nom }} - {{ nom_site }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
 <header>
   <div class="container nav">
     <div class="logo">{{ nom_site }}</div>
-    <input type="checkbox" id="burger-toggle">
-    <label for="burger-toggle" class="burger-label">&#9776;</label>
     <nav class="main-nav">
       <a href="{{ url_for('index') }}">Accueil</a>
-      <a href="#">Rendez-vous</a>
-      <a href="#">Connexion</a>
+      <a href="{{ url_for('liste_praticiens') }}">Praticiens</a>
     </nav>
   </div>
 </header>
 
 <main class="features">
   <div class="container">
-    <h2>Résultats de votre recherche</h2>
+    <div class="fiche-praticien">
+      <img src="{{ url_for('static', filename='img/doctor.png') }}" alt="Photo de {{ praticien.nom }}" class="photo-praticien">
 
-    {% for praticien in praticiens %}
-    <div class="praticien-card">
-      <span class="distance-badge">{{ praticien.distance }} km</span>
-      <img src="{{ url_for('static', filename='img/doctor.png') }}" alt="Praticien">
-      <div class="info">
-        <h3>{{ praticien.nom }}</h3>
-        <p>{{ praticien.specialite }} à {{ praticien.ville }}</p>
-        <a href="{{ url_for('fiche_praticien', id=praticien.id) }}" class="button">Voir profil</a>
+      <div class="infos">
+        <h1>{{ praticien.nom }}</h1>
+        <p class="specialite">{{ praticien.specialite }}</p>
+        <p class="ville">{{ praticien.ville }}</p>
+        <p class="description">{{ praticien.description }}</p>
+
+        <a href="{{ url_for('reserver', id=praticien.id) }}" class="button">Prendre rendez-vous</a>
       </div>
     </div>
-    {% endfor %}
-
   </div>
 </main>
 
