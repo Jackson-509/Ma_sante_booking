@@ -9,6 +9,7 @@ def create_project(nom_site, slug, couleur="#00838f"):
         base / "templates",
         base / "static" / "css",
         base / "static" / "img",
+        base / "static" / "js",
         base / "instance"
     ]
 
@@ -20,16 +21,20 @@ def create_project(nom_site, slug, couleur="#00838f"):
     (base / "app.py").write_text(app_src, encoding="utf-8")
 
     # config.py
-    app_src = (TEMPLATE_DIR / "config.py").read_text(encoding="utf-8")
-    (base / "config.py").write_text(app_src, encoding="utf-8")
+    config_src = (TEMPLATE_DIR / "config.py").read_text(encoding="utf-8")
+    (base / "config.py").write_text(config_src, encoding="utf-8")
 
     # index.html
     index_src = (TEMPLATE_DIR / "index.html").read_text(encoding="utf-8")
-    (base / "templates" / "index.html").write_text(index_src.format(nom_site=nom_site), encoding="utf-8")
+    (base / "templates" / "index.html").write_text(index_src, encoding="utf-8")
 
     # fiche_praticien.html
-    index_src = (TEMPLATE_DIR / "fiche_praticien.html").read_text(encoding="utf-8")
-    (base / "templates" / "fiche_praticien.html").write_text(index_src.format(nom_site=nom_site), encoding="utf-8")
+    fiche_src = (TEMPLATE_DIR / "fiche_praticien.html").read_text(encoding="utf-8")
+    (base / "templates" / "fiche_praticien.html").write_text(fiche_src, encoding="utf-8")
+
+    # praticiens.html
+    praticiens_src = (TEMPLATE_DIR / "praticiens.html").read_text(encoding="utf-8")
+    (base / "templates" / "praticiens.html").write_text(praticiens_src, encoding="utf-8")
 
     # style.css
     style_src = (TEMPLATE_DIR / "style.css").read_text(encoding="utf-8")
@@ -54,16 +59,19 @@ def create_project(nom_site, slug, couleur="#00838f"):
 
     # Pages légales HTML
     for page in ["cgu.html", "mentions-legales.html", "politique-confidentialite.html", "parametres-cookies.html"]:
-        content = (TEMPLATE_DIR / page).read_text(encoding="utf-8").format(nom_site=nom_site)
+        content = (TEMPLATE_DIR / page).read_text(encoding="utf-8")
         (base / "templates" / page).write_text(content, encoding="utf-8")
 
-    # Footer HTML
+    # Footer HTML (à injecter dans toutes les pages principales)
     footer = (TEMPLATE_DIR / "footer.html").read_text(encoding="utf-8")
-    for html_file in ["index.html", "cgu.html", "mentions-legales.html", "politique-confidentialite.html", "parametres-cookies.html"]:
+    for html_file in [
+        "index.html", "fiche_praticien.html", "praticiens.html",
+        "cgu.html", "mentions-legales.html", "politique-confidentialite.html", "parametres-cookies.html"
+    ]:
         html_path = base / "templates" / html_file
         if html_path.exists():
-          with open(html_path, "a", encoding="utf-8") as f:
-                f.write(footer.strip())
+            with open(html_path, "a", encoding="utf-8") as f:
+                f.write("\n" + footer.strip())
 
     print(f"✅ Projet '{slug}' généré avec succès.")
 
