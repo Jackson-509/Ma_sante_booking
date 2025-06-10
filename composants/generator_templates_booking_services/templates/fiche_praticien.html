@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats - { nom_site }</title>
+    <link rel="stylesheet" href="{ url_for('static', filename='css/style.css') }">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">MaSanté</div>
+    <input type="checkbox" id="burger-toggle">
+    <label for="burger-toggle" class="burger-label">&#9776;</label>
+    <nav class="main-nav">
+      <a href="{ url_for('index') }">Accueil</a>
+      <a href="#">Rendez-vous</a>
+      <a href="#">Connexion</a>
+    </nav>
+  </div>
+</header>
+
+<main class="features">
+  <div class="container">
+    <h2>Résultats de votre recherche</h2>
+
+    <div class="praticien-card">
+      <img src="{ url_for('static', filename='img/doctor.png') }" alt="Praticien">
+      <div class="info">
+        <h3>praticien.nom</h3>
+        <p>praticien.specialite à praticien.ville</p>
+        <a href="{ url_for('fiche_praticien', id=praticien.id) }" class="button">Voir profil</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; { nom_site } - Tous droits réservés</p>
+  </div>
+</footer>
+
+</body>
+</html>
