@@ -331,3 +331,58 @@ footer a:hover {
 .site-footer .footer-links span {
     color: white;
 }
+.fiche-praticien {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 40px;
+}
+
+.fiche-praticien .photo-praticien {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e0e0e0;
+}
+
+.fiche-praticien .infos {
+  flex: 1;
+}
+
+.fiche-praticien .infos h1 {
+  font-size: 24px;
+  color: #002f5f;
+  margin-bottom: 10px;
+}
+
+.fiche-praticien .infos p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.fiche-praticien .button {
+  display: inline-block;
+  background-color: #00838f;
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.fiche-praticien .button:hover {
+  background-color: #005f66;
+}
+
+@media (max-width: 768px) {
+  .fiche-praticien {
+    flex-direction: column;
+    text-align: center;
+  }
+}
