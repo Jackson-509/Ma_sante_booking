@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaSanté</title>
+    <link rel="stylesheet" href="{ url_for('static', filename='css/style.css') }">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">MaSanté</div>
+
+    <!-- Menu burger avec checkbox -->
+    <input type="checkbox" id="burger-toggle">
+    <label for="burger-toggle" class="burger-label">&#9776;</label>
+
+    <nav class="main-nav">
+      <a href="#">Accueil</a>
+      <a href="#">Professionnels</a>
+      <a href="#">Rendez-vous</a>
+      <a href="#">Connexion</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Trouvez un professionnel de santé</h1>
+            <form class="search-form">
+                <input type="text" placeholder="Médecin, dentiste, spécialité...">
+                <input type="text" placeholder="Ville ou code postal">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2>Votre partenaire santé au quotidien</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <img src="{ url_for('static', filename='img/icon1.png') }" alt="Accès soins">
+            <h3>Accédez aux soins plus facilement</h3>
+            <p>Réservez des consultations vidéo ou en présentiel, et recevez des rappels pour ne jamais les manquer.</p>
+          </div>
+          <div class="feature-item">
+            <img src="{ url_for('static', filename='img/icon2.png') }" alt="Soins personnalisés">
+            <h3>Bénéficiez de soins personnalisés</h3>
+            <p>Échangez avec vos soignants par message, obtenez des conseils préventifs et recevez des soins quand vous en avez besoin.</p>
+          </div>
+          <div class="feature-item">
+            <img src="{ url_for('static', filename='img/icon3.png') }" alt="Gérez santé">
+            <h3>Gérez votre santé</h3>
+            <p>Rassemblez facilement toutes vos informations de santé et celles de ceux qui comptent pour vous.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; { nom_site } - Tous droits réservés</p>
+    </div>
+</footer>
+
+</body>
+</html>
